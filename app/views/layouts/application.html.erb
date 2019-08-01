@@ -7,9 +7,68 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+      <title>Sample</title>
+  <style type="text/css" href="./style.css"></style>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
   </head>
 
   <body>
+  <header>
+
+      <div class="header__bar row">
+      <h1 class="grid-6"><a href="/">BlogApp</a></h1>
+      <% if user_signed_in? %>
+        <div class="user_nav grid-6">
+          <span> <%= current_user.nickname %>
+            <ul class="user__info">
+              <li>
+                <a href="/users/<%= current_user.id %>">マイページ</a>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </span>
+          <a class="post" href="/articles/new">投稿する</a>
+        </div>
+      <% else %>
+        <div class="grid-6">
+          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+    </div>
+
+
+    <%# <nav class="indigo darken-3">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html">Post</a></li>
+          <li><a href="badges.html">Sign in</a></li>
+          <li><a href="collapsible.html">Sign up</a></li>
+        </ul>
+      </div>
+    </nav>
+
+<h1>Hello World</h1> %>
+
+<script type="text/javascript" src="./app.js"></script>
+  </header>
     <%= yield %>
+  <footer>
+    <p>
+      Copyright BlogApp.
+    </p>
+  </footer>
   </body>
 </html>
