@@ -2,5 +2,7 @@
   <% @articles.each do |article| %>
     <%= render partial: "article", locals: { article: article } %>
   <% end %>
+  <div class="pgntn">
     <%= paginate(@articles) %>
+  </div>
 </div>

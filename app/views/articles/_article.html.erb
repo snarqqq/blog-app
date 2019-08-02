@@ -2,13 +2,13 @@
 
 
   <div class="col s12 m7">
-    <h2 class="header"><%= article.title %></h2>
     <div class="card horizontal">
       <div class="card-image">
         <img src="<%= article.image %>">
       </div>
       <div class="card-stacked">
         <div class="card-content">
+          <span class="card-title"><%= article.title %></h2></span>
           <%= simple_format(article.text) %>
         </div>
         <div class="card-action">
